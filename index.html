@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Relógio em tempo real</title>
+    </head>
+    <body>
+        <script>
+            //3 - Pegar a URL
+            document.write(window.location.href);
+            document.write("</br>");
+
+            //substituiri palavra numa string
+            var str = "Terminal Root";
+            var str = str.replace("Root", "Windons");
+            document.write("Em vez de terminal Root, " + str);
+            document.write("</br>");
+
+            // redicionamento começar com http
+            //window.location="http://www.google.com.br";
+
+            //9 mostrar data
+            document.write(Date());
+            document.write("</br>");
+
+            //10 atrasando tempo
+            function timeMsg(){
+                var t = setTimeout("alertMsg()", 3000);
+            }
+            function alertMsg(){
+                document.write ("Terminal Root");
+            }
+
+            // criando um relogio
+            function startTime(){
+                var today = new Date();
+                var h= today.getHours();
+                var m = today.getMinutes();
+                var s= today.getSeconds();
+                var y = today.getMilliseconds();
+
+                //adc 0 na frente dos numero de 0 a 9
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('txt').innerHTML = h + ":" + m  + ":" + s + ":" + y;
+                t = setTimeout('startTime()', 500);
+
+                function checkTime(i){
+                    if (i<10){
+                        i= "0" + i;
+                    }
+                    return i;
+                }
+            }
+            document.write(startTime());
+
+        </script>
+        <div id="txt">
+            <a href ="#" onclick="timeMsg()"> CLique aqui. A msg aparecera</a>
+            <script>
+                document.write(startTime());
+            </script>
+        </div>
+    </body>
+</html>
